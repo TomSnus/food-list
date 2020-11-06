@@ -1,0 +1,21 @@
+<div class="row">
+</div>
+<hr>
+<div class="row">
+    <div class="col-xs-12">
+        <a [ngClass]="{green: isGreen(), 
+        yellow: isYellow(), 
+    red: isRed()}" href="#" class="list-group-item clearfix">
+            <span class="pull-left">
+                <img *ngIf="!(element.imageUrl == null)" [src]="element.imageUrl" alt="{{ element.name }}" class="img-responsive" style="max-height: 50px;">
+            </span>
+            <div class="pull-left">
+                <h4 class="list-group-item-heading">{{ element.name }}</h4>
+                <p class="list-group-item-text">{{ element.category }}</p>
+            </div>
+            <span class="pull-right">
+                <h3>{{getExpDays()}}</h3>
+            </span>
+        </a>
+    </div>
+</div>

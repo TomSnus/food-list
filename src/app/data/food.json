@@ -1,0 +1,15 @@
+
+[
+    {
+        "name": "Cucumber", 
+        "date" : "2020-12-12",
+        "category" : "Vegetables",
+        "imageUrl": "https://www.fr.de/bilder/2019/01/03/11416580/788292061-1181337-3Fec.jpg"
+    },
+    {
+        "name": "Tomato", 
+        "date" : "2020-11-20",
+        "category" : "Vegetables",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Bright_red_tomato_and_cross_section02.jpg/800px-Bright_red_tomato_and_cross_section02.jpg"
+    }
+]

@@ -1,0 +1,29 @@
+<div class="col-md-12">
+    <form action="">
+        <div class="row">
+            <div>
+                <h2>Name:</h2>
+            </div>
+            <div><input name="name" type="text" id="name" [(ngModel)]="name">
+            </div>
+        </div>
+        <div class="row">
+            <div>
+                <h2>Category:</h2>
+            </div>
+            <div>
+                <select [(ngModel)]="category" style="display: inline-block" class="ml-1 mb-4">
+                    <option *ngFor="let key of categoryOptions" [value]="key" [label]="categories[key]"></option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div>
+                <h2>Date:</h2>
+            </div>
+            <input name="expDate" type="date" [(ngModel)]="expDate"/>
+        </div>
+        <button (click)="onAddFood()" class="button btn btn-success">Commit
+        </button>
+    </form>
+</div>
