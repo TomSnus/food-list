@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Food } from 'src/app/shared/food.model';
 
 @Component({
@@ -8,6 +8,7 @@ import { Food } from 'src/app/shared/food.model';
 })
 export class FoodListEntryComponent implements OnInit {
   @Input() element: Food;
+  @Output() foodDeleted = new EventEmitter<Food>();
 
   constructor() { }
 
@@ -34,5 +35,9 @@ export class FoodListEntryComponent implements OnInit {
   }
   isYellow(){
     return this.getExpDays() < 30 && this.getExpDays() > 5;
+  }
+
+  onFoodDeleted() {
+    this.foodDeleted.emit(this.element);
   }
 }

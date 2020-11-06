@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-food-list [foodList]="foodList"></app-food-list>
+      <app-food-list (foodDeleted)="onFoodDeleted($event)" [foodList]="foodList"></app-food-list>
     </div>
   </div>
   <app-food-edit (foodAdded)="onFoodAdded($event)"></app-food-edit>

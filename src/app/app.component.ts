@@ -19,7 +19,13 @@ export class AppComponent {
   constructor() {
   }
 
-  onFoodAdded(foodData: {food:Food}) {
-    this.foodList.push(foodData.food);
+  onFoodAdded(foodData: Food) {
+    this.foodList.push(foodData);
+    this.foodList = this.foodList.slice();
   }
+
+  onFoodDeleted(element: Food){
+    this.foodList = this.foodList.filter(function( obj ) {
+      return obj.name !== element.name;
+  });  }
 }

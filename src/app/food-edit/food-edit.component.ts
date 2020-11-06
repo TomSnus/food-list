@@ -28,6 +28,6 @@ export class FoodEditComponent implements OnInit {
 
   onAddFood() {
     let newFood = new Food(this.name, this.expDate, this.category, '');
-    this.foodAdded.emit(this.newFood);
+    this.foodAdded.emit(newFood);
   }
 }
