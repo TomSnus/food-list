@@ -4,7 +4,7 @@
             <div>
                 <h2>Name:</h2>
             </div>
-            <div><input name="name" type="text" id="name" [(ngModel)]="name">
+            <div><input placeholder="Add Food..." name="name" type="text" id="name" [(ngModel)]="name">
             </div>
         </div>
         <div class="row">
@@ -13,6 +13,7 @@
             </div>
             <div>
                 <select name="category" [(ngModel)]="category" style="display: inline-block" class="ml-1 mb-4">
+                    <option [ngValue]="undefined" hidden [value]="" selected>Select category </option>
                     <option *ngFor="let key of categoryOptions" [value]="key" [label]="categories[key]"></option>
                 </select>
             </div>
@@ -21,9 +22,16 @@
             <div>
                 <h2>Date:</h2>
             </div>
-            <input name="expDate" type="date" [(ngModel)]="expDate"/>
+            <input name="expDate" type="date" [(ngModel)]="expDate" />
         </div>
-        <button (click)="onAddFood()" class="button btn btn-success">Commit
-        </button>
+        <div class="row">
+            <div>
+                <h2>Image Url:</h2>
+            </div>
+            <input name="imageUrl" type="text" [(ngModel)]="imageUrl" />
+        </div>
+        <div class="row"><button (click)="onAddFood()" class="button btn btn-success">Commit
+            </button>
+        </div>
     </form>
 </div>

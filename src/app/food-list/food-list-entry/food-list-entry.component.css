@@ -1,12 +1,23 @@
-.green{
+.green {
     background-color: greenyellow;
 }
-.yellow{
+
+.yellow {
     background-color: yellow;
 }
-.red{
+
+.red {
     background-color: lightcoral;
 }
+
 .removeItem {
     margin-left: 15px;
-  }
+}
+
+.list-group-item:hover {
+    border: solid black;
+}
+
+img {
+    border: 2px solid black;
+}

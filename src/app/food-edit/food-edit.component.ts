@@ -12,6 +12,7 @@ export class FoodEditComponent implements OnInit {
   public  newFood: Food = new Food('', new Date(), Category.VEGETABLES, '');
   public name: string = '';
   public expDate: Date;
+  public imageUrl = 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80';
   public category: Category;
   categories =  Category;
   public categoryOptions = [];
@@ -27,7 +28,7 @@ export class FoodEditComponent implements OnInit {
   }
 
   onAddFood() {
-    let newFood = new Food(this.name, this.expDate, this.category, '');
+    let newFood = new Food(this.name, this.expDate, this.category, this.imageUrl);
     this.foodAdded.emit(newFood);
   }
 }

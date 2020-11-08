@@ -1,11 +1,9 @@
-<app-header></app-header>
+<app-header (selectedComponent)="onNavigate($event)"></app-header>
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <app-food-list (foodDeleted)="onFoodDeleted($event)" [foodList]="foodList"></app-food-list>
+    <div class="row">
+        <div class="col-md-12">
+            <app-food-list *ngIf="loadedComponent==='food-list'" (foodDeleted)="onFoodDeleted($event)" [foodList]="foodList"></app-food-list>
+        </div>
     </div>
-  </div>
-  <app-food-edit (foodAdded)="onFoodAdded($event)"></app-food-edit>
+    <app-food-edit *ngIf="loadedComponent !=='food-list'" (foodAdded)="onFoodAdded($event)"></app-food-edit>
 </div>
-
-
