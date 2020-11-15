@@ -2,8 +2,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <app-food-list *ngIf="loadedComponent==='food-list'" (foodDeleted)="onFoodDeleted($event)" [foodList]="foodList"></app-food-list>
+            <app-food-list *ngIf="loadedComponent==='food-list'" [foodList]="foodList"></app-food-list>
         </div>
     </div>
-    <app-food-edit *ngIf="loadedComponent !=='food-list'" (foodAdded)="onFoodAdded($event)"></app-food-edit>
+    <app-food-edit *ngIf="loadedComponent !=='food-list'" (navigateBack)="onNavigate()" [editItem]="editItem"></app-food-edit>
 </div>

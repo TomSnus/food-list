@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FoodService } from 'src/app/services/food.service';
 import { Food } from 'src/app/shared/food.model';
 
 @Component({
@@ -8,9 +9,8 @@ import { Food } from 'src/app/shared/food.model';
 })
 export class FoodListEntryComponent implements OnInit {
   @Input() element: Food;
-  @Output() foodDeleted = new EventEmitter<Food>();
 
-  constructor() { }
+  constructor(private foodService: FoodService) { }
 
   ngOnInit(): void {
   }
@@ -19,25 +19,17 @@ export class FoodListEntryComponent implements OnInit {
     return this.calculateDiff(new Date(this.element.date))
   }
 
-  calculateDiff(dateSent) {
+  calculateDiff(diffDate: Date) {
     let currentDate = new Date();
-    dateSent = new Date(dateSent);
-
-    return -1 * Math.floor((Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()) - Date.UTC(dateSent.getFullYear(), dateSent.getMonth(), dateSent.getDate())) / (1000 * 60 * 60 * 24));
-  }
-
-  isRed(){
-    return this.getExpDays() <=5;
-  }
-
-  isGreen(){
-    return this.getExpDays() > 30;
-  }
-  isYellow(){
-    return this.getExpDays() < 30 && this.getExpDays() > 5;
+    diffDate = new Date(diffDate);
+    return -1 * Math.floor((Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()) - Date.UTC(diffDate.getFullYear(), diffDate.getMonth(), diffDate.getDate())) / (1000 * 60 * 60 * 24));
   }
 
   onFoodDeleted() {
-    this.foodDeleted.emit(this.element);
+    this.foodService.removeFoodItem(this.element);
+  }
+
+  onFoodEdit() {
+    this.foodService.editFoodItem(this.element);
   }
 }

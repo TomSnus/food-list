@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Category } from './shared/food.category';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { FoodService } from './services/food.service';
 import { Food } from './shared/food.model';
 
 @Component({
@@ -7,29 +7,32 @@ import { Food } from './shared/food.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, AfterViewInit{
   title = 'food-list';
   defaultComponent = 'food-list';
   loadedComponent = this.defaultComponent;
-  foodList: Food[] = [
-    new Food('Cucumber', new Date('2020-11-20'), Category.VEGETABLES, 'https://www.fr.de/bilder/2019/01/03/11416580/788292061-1181337-3Fec.jpg'),
-    new Food('Tomato', new Date('2020-11-10'), Category.VEGETABLES, 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Bright_red_tomato_and_cross_section02.jpg/800px-Bright_red_tomato_and_cross_section02.jpg')
-  ];
-
-  constructor() {
+  editItem: Food;
+  constructor(private foodService: FoodService) {
   }
 
-  onFoodAdded(foodData: Food) {
-    this.foodList.push(foodData);
-    this.foodList = this.foodList.slice();
-    this.loadedComponent = this.defaultComponent;
+  //reset editItem
+  ngAfterViewInit(): void {
+    this.editItem = undefined;
   }
-  onFoodDeleted(element: Food) {
-    this.foodList = this.foodList.filter(function (obj) {
-      return obj.name !== element.name;
-    });
+  
+  ngOnInit(): void {
+    this.foodService.editFood.subscribe(
+      (food: Food) => {
+        this.loadedComponent = 'food-edit';
+        this.editItem = food;
+      }
+    )
   }
-  onNavigate(component: string){
-    this.loadedComponent = component;
+
+  onNavigate(comp: string) {
+    if (comp !== undefined)
+      this.loadedComponent = comp;
+    else
+      this.loadedComponent = this.defaultComponent;
   }
 }

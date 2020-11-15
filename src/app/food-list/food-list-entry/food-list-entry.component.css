@@ -1,16 +1,11 @@
-.green {
-    background-color: greenyellow;
-}
-
-.yellow {
-    background-color: yellow;
-}
-
-.red {
-    background-color: lightcoral;
+.removeItem {
+    position: absolute;
+    margin-left: 15px;
+    margin-top: 25px;
 }
 
 .removeItem {
+    position: absolute;
     margin-left: 15px;
 }
 

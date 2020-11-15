@@ -8,6 +8,8 @@ import { FoodListComponent } from './food-list/food-list.component';
 import { FoodListEntryComponent } from './food-list/food-list-entry/food-list-entry.component';
 import { FoodEditComponent } from './food-edit/food-edit.component';
 import { FormsModule } from '@angular/forms';
+import { TileColorDirective } from './shared/tileColor.directive';
+import { FoodService } from './services/food.service';
 
 @NgModule({
   declarations: [
@@ -15,14 +17,15 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     FoodListComponent,
     FoodListEntryComponent,
-    FoodEditComponent
+    FoodEditComponent,
+    TileColorDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
     FormsModule
   ],
-  providers: [],
+  providers: [FoodService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
