@@ -7,7 +7,7 @@ import { Food } from './shared/food.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, AfterViewInit{
+export class AppComponent implements OnInit{
   title = 'food-list';
   defaultComponent = 'food-list';
   loadedComponent = this.defaultComponent;
@@ -15,11 +15,6 @@ export class AppComponent implements OnInit, AfterViewInit{
   constructor(private foodService: FoodService) {
   }
 
-  //reset editItem
-  ngAfterViewInit(): void {
-    this.editItem = undefined;
-  }
-  
   ngOnInit(): void {
     this.foodService.editFood.subscribe(
       (food: Food) => {
@@ -34,5 +29,7 @@ export class AppComponent implements OnInit, AfterViewInit{
       this.loadedComponent = comp;
     else
       this.loadedComponent = this.defaultComponent;
+    //reset editItem
+    this.editItem = undefined;
   }
 }

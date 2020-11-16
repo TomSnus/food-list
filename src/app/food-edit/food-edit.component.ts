@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { FoodService } from '../services/food.service';
 import { Category } from '../shared/food.category';
 import { Food } from '../shared/food.model';
@@ -8,8 +8,9 @@ import { Food } from '../shared/food.model';
   styleUrls: ['./food-edit.component.css']
 })
 export class FoodEditComponent implements OnInit, OnDestroy {
+  @ViewChild('categoryCombo') categoryCombo: ElementRef;
   @Output() navigateBack = new EventEmitter<void>();
-  @Input() editItem: Food
+  @Input() editItem: Food;
   name: string = '';
   expDate: Date;
   imageUrl = 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80';

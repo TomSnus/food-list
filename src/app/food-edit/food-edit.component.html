@@ -13,8 +13,8 @@
             </div>
             <div>
                 <select name="category" [(ngModel)]="category" style="display: inline-block" class="ml-1 mb-4">
-                    <option [ngValue]="undefined" hidden [value]="" selected>Select category </option>
-                    <option *ngFor="let key of categoryOptions" [value]="key" [label]="categories[key]"></option>
+                    <option *ngIf="editItem !== undefined" [ngValue]="undefined" hidden [value]="" selected>Select category </option>
+                    <option [value]="categories[key] " id="key" *ngFor="let key of categoryOptions" [label]="categories[key]"></option>
                 </select>
             </div>
         </div>
