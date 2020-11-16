@@ -7,7 +7,7 @@ import { Food } from '../shared/food.model';
   templateUrl: './food-edit.component.html',
   styleUrls: ['./food-edit.component.css']
 })
-export class FoodEditComponent implements OnInit, OnDestroy {
+export class FoodEditComponent implements OnInit {
   @ViewChild('categoryCombo') categoryCombo: ElementRef;
   @Output() navigateBack = new EventEmitter<void>();
   @Input() editItem: Food;
@@ -21,12 +21,9 @@ export class FoodEditComponent implements OnInit, OnDestroy {
 
   constructor(private foodService: FoodService) {}
 
-  ngOnDestroy(): void {
-    this.editItem = undefined;
-  }
-
   ngOnInit(): void {
     this.categoryOptions = Object.keys(this.categories);
+    //init attributes for editing
     if(this.editItem !== undefined){
       this.name = this.editItem.name;
       this.expDate = this.editItem.date;

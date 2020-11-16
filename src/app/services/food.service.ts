@@ -27,6 +27,7 @@ export class FoodService {
     }
 
     editFoodItem(food: Food) {
+        //remove item to be edited to prevent duplicates
         this.removeFoodItem(food);
         this.editFood.emit(food);
     }
